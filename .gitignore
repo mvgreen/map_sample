@@ -43,3 +43,5 @@ captures/
 
 # App Bundle
 *.aab
+
+apikey.properties
