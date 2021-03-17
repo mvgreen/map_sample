@@ -15,10 +15,6 @@ abstract class BaseFragment : Fragment {
     private val compositeDisposable by lazy { CompositeDisposable() }
     private val globalListeners by lazy { mutableListOf<ViewTreeObserver.OnGlobalLayoutListener>() }
 
-    open fun onBackPressed(): Boolean {
-        return false
-    }
-
     override fun onPause() {
         globalListeners.unsubscribeAll()
         compositeDisposable.clear()

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -44,6 +45,8 @@ android {
 }
 
 dependencies {
+    def nav_version = "2.3.4"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
     implementation project(':data')
@@ -55,6 +58,10 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // UI
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.2.0'

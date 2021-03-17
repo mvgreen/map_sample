@@ -21,21 +21,4 @@ abstract class AppActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    override fun onBackPressed() {
-        var fragment: BaseFragment? = null
-        for (fr in supportFragmentManager.fragments.reversed()) {
-            if (fr is BaseFragment) {
-                fragment = fr
-                break
-            }
-        }
-
-        if (fragment != null) {
-            if (!fragment.onBackPressed())
-                super.onBackPressed()
-        } else {
-            super.onBackPressed()
-        }
-    }
-
 }
