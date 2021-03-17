@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Map Test</string>
+    <string name="add_point">Добавление точки</string>
+    <string name="point_address">Адрес</string>
+    <string name="point_name">Название</string>
+    <string name="action_add_point">Добавить точку</string>
 </resources>
