@@ -1,6 +1,7 @@
 package com.mvgreen.maptest.ui.main.fragment
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.google.android.material.chip.Chip
 import com.mvgreen.maptest.R
@@ -27,6 +28,10 @@ class MainMenuFragment : BaseFragment() {
     override fun setupViewModel() {
         viewModel.getLiveGeotagList().observe(this, {
             updateChipList(it)
+        })
+        viewModel.getLiveSearchInProgress().observe(this, { inProgress ->
+            binding.btnAddPoint.isEnabled = !inProgress
+            binding.progressBar.isVisible = inProgress
         })
         binding.btnAddPoint.setOnClickListener {
             viewModel.onAddGeotag(

@@ -16,16 +16,27 @@ class MainMenuViewModel @Inject constructor(
 
     private val liveGeotagList: MutableLiveData<List<Geotag>> = MutableLiveData()
 
+    private val liveSearchInProgress: MutableLiveData<Boolean> = MutableLiveData()
+
     fun getLiveGeotagList(): LiveData<List<Geotag>> = liveGeotagList
+
+    fun getLiveSearchInProgress(): LiveData<Boolean> = liveSearchInProgress
 
     @SuppressLint("CheckResult")
     fun onAddGeotag(address: String, name: String) {
+        if (liveSearchInProgress.value == true) {
+            return
+        }
+        liveSearchInProgress.onNext(true)
         geocodeUseCase
             .addGeotag(Geotag(name, address))
             .subscribe(
-                {},
+                {
+                    liveSearchInProgress.onNext(false)
+                },
                 {
                     events.offer(GeocodeErrorEvent(it as Exception))
+                    liveSearchInProgress.onNext(false)
                 }
             )
     }
