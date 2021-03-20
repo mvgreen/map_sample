@@ -28,6 +28,7 @@ abstract class BaseFragment : Fragment {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainMenuBinding.inflate(inflater)
+        setupViewModel()
         return binding.root
     }
 
@@ -37,7 +38,9 @@ abstract class BaseFragment : Fragment {
         super.onPause()
     }
 
-    fun showSnackbar(message: String) {
+    protected abstract fun setupViewModel()
+
+    protected fun showSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 

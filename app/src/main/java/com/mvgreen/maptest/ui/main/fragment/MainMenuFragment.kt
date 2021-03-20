@@ -18,24 +18,33 @@ class MainMenuFragment : BaseFragment() {
         }
     })
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun setupViewModel() {
         viewModel.getLiveGeotagList().observe(this, {
             updateChipList(it)
         })
+        binding.btnAddPoint.setOnClickListener {
+            viewModel.onAddGeotag(
+                binding.etPointAddress.text.toString(),
+                binding.etPointName.text.toString()
+            )
+        }
+        
+        viewModel.onLoadGeotagList()
     }
 
     private fun updateChipList(list: List<Geotag>) {
         val group = binding.chgroupSavedPoints
         group.removeAllViews()
         for (item in list) {
-            Chip(requireContext())
+            val chip = Chip(requireContext())
                 .apply {
                     text = item.name
                     setOnClickListener {
                         showSnackbar(getString(R.string.message_placeholder_action))
                     }
                 }
+            group.addView(chip)
+            group.invalidate()
         }
     }
 

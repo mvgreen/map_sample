@@ -33,7 +33,8 @@ class GeotagRepositoryImpl
     override fun addGeotag(geotag: Geotag): Completable {
         return with(geotag) {
             val id = UUID.randomUUID().toString()
-            geotagDao.insert(DbGeotag(id, name, address, latitude, longitude))
+            // Latitude and longitude are already loaded
+            geotagDao.insert(DbGeotag(id, name, address, latitude!!, longitude!!))
         }
     }
 
