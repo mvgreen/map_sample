@@ -9,6 +9,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "30.0.1"
@@ -21,6 +25,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        buildConfigField("String", "GMAPS_KEY", apikeyProperties['GMAPS_KEY'])
     }
 
     buildTypes {

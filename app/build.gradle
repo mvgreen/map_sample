@@ -5,10 +5,6 @@ plugins {
     id "androidx.navigation.safeargs.kotlin"
 }
 
-def apikeyPropertiesFile = rootProject.file("apikey.properties")
-def apikeyProperties = new Properties()
-apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
-
 android {
     compileSdkVersion 29
     buildToolsVersion "30.0.1"
@@ -21,8 +17,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", "GMAPS_KEY", apikeyProperties['GMAPS_KEY'])
     }
 
     buildFeatures {
