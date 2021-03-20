@@ -8,13 +8,11 @@ import javax.inject.Inject
 
 class GoogleMapsApiFactory @Inject constructor(
     httpErrorInterceptor: HttpErrorInterceptor,
-    authenticator: Authenticator,
     vararg converters: Converter.Factory
 ): ApiFactory(
     NetworkConstants.GoogleMapsUrl(),
     OkHttpClient.Builder()
         .addInterceptor(httpErrorInterceptor)
-        .authenticator(authenticator)
         .build(),
     *converters
 )

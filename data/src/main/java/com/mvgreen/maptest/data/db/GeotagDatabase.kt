@@ -6,7 +6,7 @@ import com.mvgreen.maptest.data.db.dao.GeotagDao
 import com.mvgreen.maptest.data.db.entity.DbGeotag
 
 @Database(entities = [DbGeotag::class], version = 1)
-abstract class Database : RoomDatabase() {
+abstract class GeotagDatabase : RoomDatabase() {
 
     abstract fun geotagDao(): GeotagDao
 
