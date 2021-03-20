@@ -5,4 +5,8 @@
     <string name="point_name">Название</string>
     <string name="action_add_point">Добавить точку</string>
     <string name="message_placeholder_action">Карта пока не реализована</string>
+
+    <string name="geocode_error_general">Серверу не удалось выполнить запрос</string>
+    <string name="geocode_error_zero">Сервер не нашел ни одного совпадения</string>
+    <string name="geocode_error_limit">Превышен лимит запросов к серверу на этот месяц</string>
 </resources>

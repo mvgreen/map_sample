@@ -6,6 +6,8 @@ import io.reactivex.disposables.Disposable
 
 abstract class BaseViewModel : ViewModel() {
 
+    val events = EventsQueue()
+
     protected val compositeDisposable by lazy { CompositeDisposable() }
 
     override fun onCleared() {
