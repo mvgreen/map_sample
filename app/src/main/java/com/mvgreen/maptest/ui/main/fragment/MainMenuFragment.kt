@@ -1,12 +1,14 @@
 package com.mvgreen.maptest.ui.main.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.google.android.material.chip.Chip
 import com.mvgreen.maptest.R
+import com.mvgreen.maptest.databinding.FragmentMainMenuBinding
 import com.mvgreen.maptest.domain.entity.Geotag
-import com.mvgreen.maptest.domain.exception.GeocodeGeneralException
 import com.mvgreen.maptest.domain.exception.GeocodeLimitException
 import com.mvgreen.maptest.domain.exception.GeocodeZeroResultsException
 import com.mvgreen.maptest.internal.di.DI
@@ -17,7 +19,7 @@ import com.mvgreen.maptest.ui.main.viewmodel.MainMenuViewModel
 import com.mvgreen.maptest.utils.observeEvents
 import com.mvgreen.maptest.utils.viewModelFactory
 
-class MainMenuFragment : BaseFragment() {
+class MainMenuFragment : BaseFragment<FragmentMainMenuBinding>(R.layout.fragment_main_menu) {
 
     private val viewModel: MainMenuViewModel by viewModels(factoryProducer = {
         viewModelFactory {
@@ -25,11 +27,15 @@ class MainMenuFragment : BaseFragment() {
         }
     })
 
-    override fun setupViewModel() {
-        viewModel.getLiveGeotagList().observe(this, {
+    override fun initBinding(inflater: LayoutInflater) {
+        binding = FragmentMainMenuBinding.inflate(inflater)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.getLiveGeotagList().observe(viewLifecycleOwner, {
             updateChipList(it)
         })
-        viewModel.getLiveSearchInProgress().observe(this, { inProgress ->
+        viewModel.getLiveSearchInProgress().observe(viewLifecycleOwner, { inProgress ->
             binding.btnAddPoint.isEnabled = !inProgress
             binding.progressBar.isVisible = inProgress
         })
