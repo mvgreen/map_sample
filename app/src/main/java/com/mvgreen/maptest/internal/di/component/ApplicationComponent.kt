@@ -7,6 +7,7 @@ import com.mvgreen.maptest.domain.usecase.GeotagUseCase
 import com.mvgreen.maptest.internal.di.module.AppModule
 import com.mvgreen.maptest.internal.di.scope.ApplicationScope
 import com.mvgreen.maptest.ui.main.viewmodel.MainMenuViewModel
+import com.mvgreen.maptest.ui.map.viewmodel.MapViewModel
 import com.squareup.moshi.Moshi
 import dagger.BindsInstance
 import dagger.Component
@@ -24,6 +25,8 @@ internal interface ApplicationComponent {
     fun geotagUseCase(): GeotagUseCase
 
     fun mainMenuViewModel(): MainMenuViewModel
+
+    fun mapViewModel(): MapViewModel
 
     @Component.Builder
     interface Builder {

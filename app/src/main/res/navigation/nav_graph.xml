@@ -9,14 +9,14 @@
         android:id="@+id/mainMenuFragment"
         android:name="com.mvgreen.maptest.ui.main.fragment.MainMenuFragment"
         android:label="fragment_main_menu"
-        tools:layout="@layout/fragment_main_menu" >
+        tools:layout="@layout/fragment_main_menu">
         <action
-            android:id="@+id/action_mainMenuFragment_to_secondFragment"
-            app:destination="@id/secondFragment" />
+            android:id="@+id/action_mainMenuFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
-        android:id="@+id/secondFragment"
-        android:name="com.mvgreen.maptest.SecondFragment"
-        android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
+        android:id="@+id/mapFragment"
+        android:name="com.mvgreen.maptest.ui.map.fragment.MapFragment"
+        android:label="fragment_map_container"
+        tools:layout="@layout/fragment_map_container" />
 </navigation>

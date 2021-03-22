@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.google.android.material.chip.Chip
 import com.mvgreen.maptest.R
 import com.mvgreen.maptest.databinding.FragmentMainMenuBinding
@@ -57,7 +58,13 @@ class MainMenuFragment : BaseFragment<FragmentMainMenuBinding>(R.layout.fragment
                 .apply {
                     text = item.name
                     setOnClickListener {
-                        showSnackbar(getString(R.string.message_placeholder_action))
+                        val actionId =
+                            MainMenuFragmentDirections.actionMainMenuFragmentToMapFragment().actionId
+                        val args = Bundle().apply { putSerializable("geotag", item) }
+
+                        requireView()
+                            .findNavController()
+                            .navigate(actionId, args)
                     }
                 }
             group.addView(chip)

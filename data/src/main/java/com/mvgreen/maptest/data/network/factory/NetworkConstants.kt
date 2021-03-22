@@ -9,7 +9,7 @@ object NetworkConstants {
     class GoogleMapsUrl : ServerUrl("https://maps.googleapis.com/maps/api/")
 
     object GoogleMapsConstants {
-        const val API_KEY = BuildConfig.GMAPS_KEY
+        const val API_KEY = BuildConfig.GEOCODE_KEY
 
         const val STATUS_OK = "OK"
         const val STATUS_ZERO = "ZERO_RESULTS"

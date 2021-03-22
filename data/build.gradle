@@ -26,7 +26,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 
-        buildConfigField("String", "GMAPS_KEY", apikeyProperties['GMAPS_KEY'])
+        buildConfigField("String", "GEOCODE_KEY", apikeyProperties['GEOCODE_KEY'])
     }
 
     buildTypes {
